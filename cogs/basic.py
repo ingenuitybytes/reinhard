@@ -3,7 +3,6 @@ from discord import Spotify
 from discord.ext import commands
 from utils import *
 
-from settings import *
 
 class Basic(commands.Cog):
     def __init__(self, bot):
