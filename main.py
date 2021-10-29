@@ -2,6 +2,7 @@ import os
 import asyncio
 import discord
 from discord.ext import commands
+from settings import *
 
 intents = discord.Intents.all()
 discord.member = True
@@ -30,4 +31,4 @@ for filename in os.listdir("./cogs"):
     if filename.endswith(".py") and filename != "__init__.py":
         bot.load_extension(f"cogs.{filename[:-3]}")
 
-bot.run("NzA4Nzk0MzI4NzU1MjA4MjUz.XrciKA.kemJAw_aNwTnItZUnxTgatDpZTs")
+bot.run(DISCORD_BOT_TOKEN)

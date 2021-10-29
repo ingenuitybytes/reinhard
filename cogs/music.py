@@ -4,6 +4,7 @@ from discord.flags import Intents
 import youtube_dl
 from utils import mods_or_owner
 
+from settings import *
 
 class Music(commands.Cog):    
     def __init__(self, bot):
