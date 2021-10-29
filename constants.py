@@ -1,19 +1,15 @@
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
-
-################paths################
-SETTINGS_DIR = os.path.dirname(os.path.abspath(__file__))
-ROOT_DIR = os.path.dirname(SETTINGS_DIR)
-DATA_DIR = os.path.join(ROOT_DIR, "data")
 
 ################TOKEN################
+load_dotenv()
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 
 ################createVoice################
 TEMPCHANNEL = "➕〡CREATE CHANNEL"
 TEMPCATEGORY = "──༺VOICECHANNEL༻──"
+
 ################music################
 FFMPEG_OPTIONS = {
     'before_options': '-reconnect 1 -reconnect_streamed 1 -reconnect_delay_max 5',
