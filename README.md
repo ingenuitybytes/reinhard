@@ -1,2 +1,2 @@
 # REINHARD
-A discord bot created with python
+A discord bot created with Python.
