@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 from utils import mods_or_owner
 
-from settings import *
+from constants import *
 
 class Rules(commands.Cog):
     def __init__(self, bot):
