@@ -57,13 +57,13 @@ class Voice(commands.Cog):
                     
 ################schuleSection################
         if before.channel is not None:
-                    if before.channel.category_id == get_category_by_name(before.channel.guild, TEMP_SCHULE_CATEGORY).id:
-                        print(f"{member.name} left a temp channel")
-                    for channel in self.current_channels:
-                                if before.channel.name == f"👤〡{channel} LERNEN".upper() and len(before.channel.members) == 0:
-                                    await before.channel.delete()
-                                    self.current_channels.remove(channel)
-                                    break
+            if before.channel.category_id == get_category_by_name(before.channel.guild, TEMP_SCHULE_CATEGORY).id:
+                print(f"{member.name} left a temp channel")
+            for channel in self.current_channels:
+                        if before.channel.name == f"👤〡{channel} LERNEN".upper() and len(before.channel.members) == 0:
+                            await before.channel.delete()
+                            self.current_channels.remove(channel)
+                            break
                                                 
         if after.channel is not None:
             if after.channel.name == TEMP_SCHULE_CHANNEL:
