@@ -76,6 +76,5 @@ class Voice(commands.Cog):
                 else:
                     await member.move_to(get_channel_by_name(after.channel.guild, f"👤〡{member.name} LERNEN".upper()))
 
-
 def setup(bot):
     bot.add_cog(Voice(bot))
