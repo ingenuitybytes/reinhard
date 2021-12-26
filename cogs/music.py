@@ -45,6 +45,10 @@ class Music(commands.Cog):
         else:
             await ctx.voice_client.move.to(voice_channel)
     
+    @commands.command()        
+    async def disconnect(self, ctx):
+        await ctx.voice_client.disconnect()
+        
     @commands.command()
     async def play(self, ctx, url):
         ctx.voice_client.stop()
