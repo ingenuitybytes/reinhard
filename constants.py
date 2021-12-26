@@ -6,9 +6,13 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 
-################createVoice################
-TEMPCHANNEL = "➕〡CREATE CHANNEL"
-TEMPCATEGORY = "──༺VOICECHANNEL༻──"
+################createMainVoice################
+TEMP_MAIN_CHANNEL = "➕〡CREATE CHANNEL"
+TEMP_MAIN_CATEGORY = "──༺VOICECHANNEL༻──"
+
+################createSchuleVoice################
+TEMP_SCHULE_CHANNEL = "➕〡LEARNING ROOM"
+TEMP_SCHULE_CATEGORY = "─────༺TGM༻─────"
 
 ################music################
 FFMPEG_OPTIONS = {

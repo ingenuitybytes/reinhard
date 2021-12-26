@@ -30,7 +30,7 @@ async def create_voice_channel(guild, channel_name, category_name, user_limit, b
 def get_channel_by_name(guild, channel_name):
         channel = None
         for c in guild.channels:
-                if c.name == channel_name.lower():
+                if c.name == channel_name:
                         channel = c
                         break
         return channel
