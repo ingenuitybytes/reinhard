@@ -35,6 +35,7 @@ class Voice(commands.Cog):
                                 print(f"{member.name} stopped streaming")
                                 self.current_streamers.remove(member.id)
                             break
+                        
 ################mainSection################       
         if before.channel is not None:
             if before.channel.category_id == get_category_by_name(before.channel.guild, TEMP_MAIN_CATEGORY).id:
