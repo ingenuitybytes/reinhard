@@ -1,5 +1,9 @@
 import discord
+
 from discord import Spotify
+from discord import components
+#from discord.ui import Button, View
+
 from discord.ext import commands
 from utils import *
 
@@ -78,6 +82,13 @@ class Basic(commands.Cog):
     async def say(self, ctx, *args):
         await ctx.message.delete()
         await ctx.send(" ".join(args))
+    
+    #@commands.command()
+    #async def button(self, ctx):
+    #    button = Button(label="hi")
+    #    view = View()
+    #   view.add_item(button)
+    #    await ctx.channel.send("S", view=view)
     
     @commands.Cog.listener()
     async def on_message(self, ctx):
