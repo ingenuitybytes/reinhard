@@ -76,42 +76,6 @@ class Music(commands.Cog):
         channel_id = channel.id
         if ctx.channel.id == channel_id:
             await ctx.delete()
-    
-    #@commands.Cog.listener()
-    #async def on_message(self, ctx):
-    #    channel = discord.utils.get(self.bot.get_all_channels(), name=MUSICCHANNEL)
-    #    channel_id = channel.id
-    #    if ctx.channel.id == channel_id:
-    #        if ctx.author.voice is not None:
-    #            voice_channel = ctx.author.voice.channel
-    #            if ctx.voice is None:
-    #                await voice_channel.connect()
-                    
-    #            vc = discord.utils.get(self.bot.voice_clients)
-    #            vc.stop()
-    #            with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-    #                info = ydl.extract_info(ctx.content, download=False)
-    #                url = info['formats'][0]['url']
-    #                source = await discord.FFmpegOpusAudio.from_probe(url, **FFMPEG_OPTIONS)
-    #                vc.play(source)    
-    #            await ctx.delete()
-    
-    #@commands.Cog.listener()
-    #async def on_raw_reaction_add(self, payload):
-    #    user = self.bot.get_user(payload.user_id)
-    #    if not user.bot:
-    #        channel = discord.utils.get(self.bot.get_all_channels(), name=MUSICCHANNEL)
-    #        channel_id = channel.id
-    #        if payload.channel_id == channel_id:
-    #            message = await channel.fetch_message(payload.message_id)
-    #            await message.remove_reaction(payload.emoji, user)
-            
-    #            emoji = payload.emoji.name
-    #            vc = discord.utils.get(self.bot.voice_clients)
-    #            if emoji == "stop" and vc.voice is not None:
-    #                await vc.disconnect()
-    #            if emoji == "playorpause" and vc.voice is not None:
-    #                vc.pause()
-        
+
 def setup(bot):
     bot.add_cog(Music(bot))
