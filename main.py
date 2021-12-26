@@ -13,13 +13,13 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-        print('\nWelcome')
-        print('------------------')
-        print('Logged in as {}'.format(bot.user.name))
-        print('ID:\n{}'.format(bot.user.id))
-        print('------------------')
-        print('Log:\n')
-        bot.loop.create_task(status_task())
+    print('\nWelcome')
+    print('------------------')
+    print('Logged in as {}'.format(bot.user.name))
+    print('ID:\n{}'.format(bot.user.id))
+    print('------------------') 
+    print('Log:\n')
+    bot.loop.create_task(status_task())
         
 async def status_task():
     while True:
