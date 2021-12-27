@@ -42,3 +42,6 @@ def get_category_by_name(guild, category_name):
                         category = c
                         break
         return category
+        
+def join_voice_channel(ctx):
+        return 0

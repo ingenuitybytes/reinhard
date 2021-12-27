@@ -1,4 +1,5 @@
 import discord
+import asyncio
 from discord.ext import commands
 from discord.flags import Intents
 import youtube_dl
@@ -49,16 +50,16 @@ class Music(commands.Cog):
     async def disconnect(self, ctx):
         await ctx.voice_client.disconnect()
         
-    @commands.command()
-    async def play(self, ctx, url):
-        ctx.voice_client.stop()
-        vc = ctx.voice_client
-        with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-            info = ydl.extract_info(url, download=False)
-            url2 = info['formats'][0]['url']
-            source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
+    #@commands.command()
+    #async def play(self, ctx, url):
+    #    ctx.voice_client.stop()
+    #    vc = ctx.voice_client
+    #    with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
+    #        info = ydl.extract_info(url, download=False)
+    #        url2 = info['formats'][0]['url']
+    #        source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
             #source2 = discord.PCMVolumeTransformer(source, volume=0.5)
-            vc.play(source)
+    #        vc.play(source)
     
     @commands.command()
     async def pause(self, ctx):
@@ -75,7 +76,56 @@ class Music(commands.Cog):
         channel = discord.utils.get(self.bot.get_all_channels(), name=MUSICCHANNEL)
         channel_id = channel.id
         if ctx.channel.id == channel_id:
+            message = ctx.content
             await ctx.delete()
+            
+            if ctx.author.voice is None:
+                return
 
+            vc = discord.utils.get(self.bot.voice_clients)
+            voice_channel = ctx.author.voice.channel
+            
+            if vc is None:
+                await voice_channel.connect()
+                vc = discord.utils.get(self.bot.voice_clients)
+                
+            #not ready (Verschieben von Bot)
+            else:
+                vc = discord.utils.get(self.bot.voice_clients)
+                vc.stop()
+                await vc.move_to(voice_channel)
+                await asyncio.sleep(2)
+
+            if vc.is_connected():
+                with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
+                    info = ydl.extract_info(message, download=False)
+                    url2 = info['formats'][0]['url']
+                    source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
+                    vc.play(source)
+            else:
+                print("Voice_Client ist nicht verbunden!")
+            
+    
+    @commands.Cog.listener()
+    async def on_raw_reaction_add(self, payload):
+        user = self.bot.get_user(payload.user_id)
+        if not user.bot:
+            channel = discord.utils.get(self.bot.get_all_channels(), name=MUSICCHANNEL)
+            channel_id = channel.id
+            if payload.channel_id == channel_id:
+                message = await channel.fetch_message(payload.message_id)
+                await message.remove_reaction(payload.emoji, user)
+                
+                emoji = payload.emoji.name
+                vc = discord.utils.get(self.bot.voice_clients)
+                if emoji == "stop":
+                    await vc.disconnect()
+                if emoji == "playorpause":
+                    if vc.is_playing():
+                        vc.pause()
+                    else:
+                        vc.resume()
+                              
+        
 def setup(bot):
     bot.add_cog(Music(bot))
