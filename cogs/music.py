@@ -36,20 +36,16 @@ class Music(commands.Cog):
         await message.add_reaction(f'{STAR_EMOJI}')
         await message.add_reaction(f'{CROSSMARK_EMOJI}')
 
-    @commands.command()
-    async def join(self, ctx):
-        if ctx.author.voice is None:
-            return
-        voice_channel = ctx.author.voice.channel
-        if ctx.voice_client is None:
-            await voice_channel.connect()
-        else:
-            await ctx.voice_client.move.to(voice_channel)
+    #@commands.command()
+    #async def join(self, ctx):
+    #    if ctx.author.voice is None:
+    #        return
+    #    voice_channel = ctx.author.voice.channel
+    #    if ctx.voice_client is None:
+    #        await voice_channel.connect()
+    #    else:
+    #        await ctx.voice_client.move.to(voice_channel)
     
-    @commands.command()        
-    async def disconnect(self, ctx):
-        await ctx.voice_client.disconnect()
-        
     #@commands.command()
     #async def play(self, ctx, url):
     #    ctx.voice_client.stop()
@@ -58,9 +54,13 @@ class Music(commands.Cog):
     #        info = ydl.extract_info(url, download=False)
     #        url2 = info['formats'][0]['url']
     #        source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
-            #source2 = discord.PCMVolumeTransformer(source, volume=0.5)
+    #        #source2 = discord.PCMVolumeTransformer(source, volume=0.5)
     #        vc.play(source)
-    
+     
+    @commands.command()        
+    async def disconnect(self, ctx):
+        await ctx.voice_client.disconnect()
+        
     @commands.command()
     async def pause(self, ctx):
         await ctx.voice_client.pause()
@@ -89,7 +89,6 @@ class Music(commands.Cog):
                 await voice_channel.connect()
                 vc = discord.utils.get(self.bot.voice_clients)
                 
-            #not ready (Verschieben von Bot)
             else:
                 vc = discord.utils.get(self.bot.voice_clients)
                 vc.stop()

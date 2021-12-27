@@ -6,6 +6,9 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 
+################sourceCodeGithub################
+GITHUB_LINK = "https://github.com/Tutu-Inc/REINHARD"
+
 ################createMainVoice################
 TEMP_MAIN_CHANNEL = "➕〡CREATE CHANNEL"
 TEMP_MAIN_CATEGORY = "──༺VOICECHANNEL༻──"

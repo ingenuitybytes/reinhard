@@ -18,6 +18,10 @@ class Basic(commands.Cog):
         await ctx.send(link)
 
     @commands.command()
+    async def sourcecode(self, ctx):
+        await ctx.send(GITHUB_LINK)
+
+    @commands.command()
     async def help(self, ctx):
         embed = discord.Embed(title='**HILFE ZUM BOT**', description='Hier sind alle Befehle von {} aufgelistet. Um einen Befehl aufzurufen, benutze den Prefix `.`\nWenn du Fragen hast, wende dich an einen der <@&601422939765604400>.\n\n**Befehle:**'.format(self.bot.user.mention), color=0x5865F2, timestamp= ctx.message.created_at)
                                   
