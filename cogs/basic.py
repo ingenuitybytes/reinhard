@@ -77,6 +77,7 @@ class Basic(commands.Cog):
                     await ctx.send(embed=embed)
     
     @commands.command()
+    @commands.is_owner()
     async def say(self, ctx, *args):
         await ctx.message.delete()
         await ctx.send(" ".join(args))
