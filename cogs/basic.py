@@ -29,7 +29,7 @@ class Basic(commands.Cog):
         embed.set_thumbnail(url=self.bot.user.avatar_url)
         
         embed.add_field(name=f"**VERWALTUNG** {BLURPLEEMPLOYEE_EMOJI}", value="`.profile`\n`.delete`\n`.invite`\n`.say`", inline=True)
-        embed.add_field(name=f"**INFORMATIONEN** {BLURPLESHOP_EMOJI}", value="`.userinfo`\n`.spotify`", inline=True)
+        embed.add_field(name=f"**INFORMATIONEN** {BLURPLESHOP_EMOJI}", value="`.sourcecode`\n`.userinfo`\n`.spotify`", inline=True)
         embed.add_field(name=f"**MINIGAMES** {BLURPLEROCKET_EMOJI}", value="**Coming soon...!**", inline=True)
         
         embed.set_footer(text="Stand", icon_url=self.bot.user.avatar_url)
