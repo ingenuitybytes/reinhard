@@ -23,7 +23,7 @@ async def on_ready():
     print('Log:\n')
     change_status.start()
        
-@tasks.loop(seconds=3) 
+@tasks.loop(seconds=100) 
 async def change_status():
     await bot.change_presence(activity=discord.Game(next(game)), status=discord.Status.online)
 
