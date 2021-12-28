@@ -24,7 +24,9 @@ FFMPEG_OPTIONS = {
     }
 YDL_OPTIONS = {
     'format':'bestaudio',
-     'quiet': True
+     'quiet': True, 
+     'default_search':"ytsearch", 
+     'noplaylist':'True'
     }
 
 ################channels################

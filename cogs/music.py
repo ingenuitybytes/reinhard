@@ -7,6 +7,8 @@ from utils import mods_or_owner
 
 from constants import *
 
+
+
 class Music(commands.Cog):    
     def __init__(self, bot):
         self.bot = bot
@@ -35,41 +37,6 @@ class Music(commands.Cog):
         await message.add_reaction(f'{SHUFFLETRACKS_EMOJI}')
         await message.add_reaction(f'{STAR_EMOJI}')
         await message.add_reaction(f'{CROSSMARK_EMOJI}')
-
-    #@commands.command()
-    #async def join(self, ctx):
-    #    if ctx.author.voice is None:
-    #        return
-    #    voice_channel = ctx.author.voice.channel
-    #    if ctx.voice_client is None:
-    #        await voice_channel.connect()
-    #    else:
-    #        await ctx.voice_client.move.to(voice_channel)
-    
-    #@commands.command()
-    #async def play(self, ctx, url):
-    #    ctx.voice_client.stop()
-    #    vc = ctx.voice_client
-    #    with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-    #        info = ydl.extract_info(url, download=False)
-    #        url2 = info['formats'][0]['url']
-    #        source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
-    #        #source2 = discord.PCMVolumeTransformer(source, volume=0.5)
-    #        vc.play(source)
-     
-    @commands.command()        
-    async def disconnect(self, ctx):
-        await ctx.voice_client.disconnect()
-        
-    @commands.command()
-    async def pause(self, ctx):
-        await ctx.voice_client.pause()
-        await ctx.send("Paused")
-    
-    @commands.command()
-    async def resume(self, ctx):
-        await ctx.voice_client.resume()
-        await ctx.send("Resume")
     
     @commands.Cog.listener()
     async def on_message(self, ctx):
@@ -84,27 +51,40 @@ class Music(commands.Cog):
 
             vc = discord.utils.get(self.bot.voice_clients)
             voice_channel = ctx.author.voice.channel
-            
-            if vc is None:
-                await voice_channel.connect()
-                vc = discord.utils.get(self.bot.voice_clients)
-                
-            else:
-                vc = discord.utils.get(self.bot.voice_clients)
-                vc.stop()
-                await vc.move_to(voice_channel)
-                await asyncio.sleep(2)
+        
+            vc = await self.set_voice_client(voice_channel, vc)
 
             if vc.is_connected():
-                with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
-                    info = ydl.extract_info(message, download=False)
-                    url2 = info['formats'][0]['url']
-                    source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
-                    vc.play(source)
+                await self.youtube_playing(message, vc) 
             else:
                 print("Voice_Client ist nicht verbunden!")
+               
+    async def set_voice_client(self, voice_channel, vc):
+        if vc is None:
+            await voice_channel.connect()
+            vc = discord.utils.get(self.bot.voice_clients)
+        elif vc.channel is voice_channel:
+            vc = discord.utils.get(self.bot.voice_clients)
+            vc.stop()
+        else:
+            vc = discord.utils.get(self.bot.voice_clients)
+            vc.stop()
+            await vc.move_to(voice_channel)
+            #await asyncio.sleep(2)
+        return vc
+                
+    async def youtube_playing(self, message, vc):
+            with youtube_dl.YoutubeDL(YDL_OPTIONS) as ydl:
+                info = ydl.extract_info(message, download=False)
+                if 'entries' in info:
+                    url2 = info["entries"][0]["formats"][0]['url']
+                    print("SEARCH")
+                elif 'formats' in info:
+                    print("URL")
+                    url2 = info["formats"][0]['url']
+                source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
+                vc.play(source)
             
-    
     @commands.Cog.listener()
     async def on_raw_reaction_add(self, payload):
         user = self.bot.get_user(payload.user_id)
@@ -124,7 +104,6 @@ class Music(commands.Cog):
                         vc.pause()
                     else:
                         vc.resume()
-                              
-        
+                                    
 def setup(bot):
     bot.add_cog(Music(bot))
