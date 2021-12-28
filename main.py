@@ -1,5 +1,4 @@
 import os
-import asyncio
 import discord
 from itertools import cycle
 from discord.ext import commands, tasks
@@ -9,8 +8,8 @@ from constants import *
 intents = discord.Intents.all()
 discord.member = True
 bot = commands.Bot(command_prefix = '.', intents = intents)
-game = cycle(['.help'])
 
+game = cycle(['.help'])
 bot.remove_command('help')
 
 @bot.event
