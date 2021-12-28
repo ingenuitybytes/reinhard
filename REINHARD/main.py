@@ -26,7 +26,7 @@ async def on_ready():
 async def change_status():
     await bot.change_presence(activity=discord.Game(next(game)), status=discord.Status.online)
 
-for filename in os.listdir("./cogs"):
+for filename in os.listdir("REINHARD/cogs"):
     if filename.endswith(".py") and filename != "__init__.py":
         bot.load_extension(f"cogs.{filename[:-3]}")
 
