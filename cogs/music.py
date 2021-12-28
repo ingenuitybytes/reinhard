@@ -1,5 +1,4 @@
 import discord
-import asyncio
 from discord.ext import commands
 from discord.flags import Intents
 import youtube_dl
@@ -7,11 +6,10 @@ from utils import mods_or_owner
 
 from constants import *
 
-
-
 class Music(commands.Cog):    
     def __init__(self, bot):
         self.bot = bot
+        self.queue = []
         
 ################admincommand################ 
     @commands.command()
