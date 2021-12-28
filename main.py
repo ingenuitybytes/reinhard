@@ -1,13 +1,15 @@
 import os
 import asyncio
 import discord
-from discord.ext import commands
+from itertools import cycle
+from discord.ext import commands, tasks
 
 from constants import *
 
 intents = discord.Intents.all()
 discord.member = True
 bot = commands.Bot(command_prefix = '.', intents = intents)
+game = cycle(['.help'])
 
 bot.remove_command('help')
 
@@ -19,14 +21,11 @@ async def on_ready():
     print('ID:\n{}'.format(bot.user.id))
     print('------------------') 
     print('Log:\n')
-    bot.loop.create_task(status_task())
-        
-async def status_task():
-    while True:
-        await bot.change_presence(activity=discord.Game('.help'), status=discord.Status.online)
-        await asyncio.sleep(5)
-        await bot.change_presence(activity=discord.Game('discord.gg/bQzf79Y'), status=discord.Status.online)
-        await asyncio.sleep(5)
+    change_status.start()
+       
+@tasks.loop(seconds=3) 
+async def change_status():
+    await bot.change_presence(activity=discord.Game(next(game)), status=discord.Status.online)
 
 for filename in os.listdir("./cogs"):
     if filename.endswith(".py") and filename != "__init__.py":
