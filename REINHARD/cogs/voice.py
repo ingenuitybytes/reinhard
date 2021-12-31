@@ -14,8 +14,8 @@ class Voice(commands.Cog):
         
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
-        if not before.channel:
-            print(f'{member.name} joined {after.channel.name}')
+    #    if not before.channel:
+    #        print(f'{member.name} joined {after.channel.name}')
         if before.channel and not after.channel:
             print(f"{member.name} left voicechannel!")
         if before.channel and after.channel:
