@@ -9,6 +9,9 @@ __pycache__/
 # nohup
 nohup.out
 
+#launcher
+launcher.sh
+
 # Distribution / packaging
 .Python
 build/
