@@ -6,6 +6,12 @@ __pycache__/
 # C extensions
 *.so
 
+# nohup
+nohup.out
+
+#launcher
+launcher.sh
+
 # Distribution / packaging
 .Python
 build/
