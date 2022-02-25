@@ -13,7 +13,7 @@ game = cycle(['.help'])
 bot.remove_command('help')
 
 @bot.event
-async def on_ready():
+async def on_ready()
     print('\nWelcome')
     print('------------------')
     print('Logged in as {}'.format(bot.user.name))
