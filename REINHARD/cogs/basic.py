@@ -90,7 +90,7 @@ class Basic(commands.Cog):
     async def on_message(self, ctx):
         if ctx.content == "<:lauch:884903755621994557>":
             await ctx.delete()
-            await ctx.channel.send(f"{ctx.author.name} hat einen kleinen Schwanz")
+            await ctx.channel.send(f"{ctx.author.name} hat einen kleinen Schwanz.")
             print("Hello")
  
 def setup(bot):
