@@ -14,12 +14,11 @@ bot.remove_command('help')
 
 @bot.event
 async def on_ready():
-    print('\nWelcome')
-    print('------------------')
-    print(Style.GREEN + 'Logged in as {}'.format(bot.user.name))
-    print('ID:\n{}'.format(bot.user.id))
-    print('------------------') 
-    print('Log:\n')
+    print('--------------------')
+    log.info('Logged in as {}'.format(bot.user.name))
+    log.info('ID: {}'.format(bot.user.id))
+    print('--------------------') 
+    
     change_status.start()
        
 @tasks.loop(seconds=5) 

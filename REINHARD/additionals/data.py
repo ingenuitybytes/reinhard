@@ -1,9 +1,21 @@
 import os
 from dotenv import load_dotenv
-#from pathlib import Path
 
-################extensionsPath################
-#EXTENSION_PREFIX = ".".join(Path(__file__).parts[-3:-1]) + "."
+import logging
+from colorlog import ColoredFormatter
+
+################logColoringSettings################
+LOG_LEVEL = logging.DEBUG
+LOGFORMAT = "%(log_color)s%(levelname)-8s%(reset)s | %(log_color)s%(message)s%(reset)s"
+
+logging.root.setLevel(LOG_LEVEL)
+formatter = ColoredFormatter(LOGFORMAT)
+stream = logging.StreamHandler()
+stream.setLevel(LOG_LEVEL)
+stream.setFormatter(formatter)
+log = logging.getLogger('pythonConfig')
+log.setLevel(LOG_LEVEL)
+log.addHandler(stream)
 
 ################colorPalette################
 class Style():
