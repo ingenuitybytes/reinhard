@@ -8,9 +8,9 @@ from REINHARD.additionals.data import *
 intents = discord.Intents.all()
 discord.member = True
 bot = commands.Bot(command_prefix = '.', intents = intents)
+bot.remove_command('help')
 
 game = cycle(['.help', '/help'])
-bot.remove_command('help')
 
 @bot.event
 async def on_ready():
@@ -18,7 +18,6 @@ async def on_ready():
     log.info('Logged in as {}'.format(bot.user.name))
     log.info('ID: {}'.format(bot.user.id))
     print('--------------------') 
-    
     change_status.start()
        
 @tasks.loop(seconds=5) 
