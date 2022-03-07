@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands
 
 from REINHARD.additionals.utils import mods_or_owner
-#from REINHARD.additionals.data import *
+from REINHARD.additionals.data import *
 
 class Roles(commands.Cog):
     def __init__(self, bot):

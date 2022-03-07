@@ -1,13 +1,16 @@
 import os
 import discord
+from discord import app_commands
+from discord import ui
 from itertools import cycle
 from discord.ext import commands, tasks
 
 from REINHARD.additionals.data import *
 
-intents = discord.Intents.all()
+intents = discord.Intents.default()
 discord.member = True
 bot = commands.Bot(command_prefix = '.', intents = intents)
+tree = app_commands.CommandTree(bot)
 bot.remove_command('help')
 
 game = cycle(['.help', '/help'])
