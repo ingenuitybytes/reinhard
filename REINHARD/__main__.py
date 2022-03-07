@@ -16,7 +16,7 @@ bot.remove_command('help')
 async def on_ready():
     print('\nWelcome')
     print('------------------')
-    print('Logged in as {}'.format(bot.user.name))
+    print(Style.GREEN + 'Logged in as {}'.format(bot.user.name))
     print('ID:\n{}'.format(bot.user.id))
     print('------------------') 
     print('Log:\n')
