@@ -3,7 +3,7 @@ import discord
 from itertools import cycle
 from discord.ext import commands, tasks
 
-from data.data import *
+from REINHARD.additionals.data import *
 
 intents = discord.Intents.all()
 discord.member = True
@@ -28,6 +28,6 @@ async def change_status():
 
 for filename in os.listdir("REINHARD/cogs"):
     if filename.endswith(".py") and filename != "__init__.py":
-        bot.load_extension(f"cogs.{filename[:-3]}")
+        bot.load_extension(f"REINHARD.cogs.{filename[:-3]}")
 
 bot.run(TOKEN)

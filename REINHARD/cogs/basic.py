@@ -1,11 +1,9 @@
 import discord
-
 from discord import Spotify
-
 from discord.ext import commands
 
-from utils.utils import *
-from data.data import *
+from REINHARD.additionals.utils import *
+from REINHARD.additionals.data import *
 
 class Basic(commands.Cog):
     def __init__(self, bot):

@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from data.data import *
+from REINHARD.additionals.data import *
 
 class Welcome(commands.Cog):
     def __init__(self, bot):
