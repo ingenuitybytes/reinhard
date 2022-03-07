@@ -1,7 +1,7 @@
 from discord.ext import commands
 import re
 
-from utils import *
+from REINHARD.utils.utils import *
 
 ################noError+finishedLog################
 class Voice(commands.Cog):

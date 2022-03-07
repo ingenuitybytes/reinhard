@@ -3,7 +3,7 @@ import discord
 from itertools import cycle
 from discord.ext import commands, tasks
 
-from constants import *
+from REINHARD.data.data import *
 
 intents = discord.Intents.all()
 discord.member = True
