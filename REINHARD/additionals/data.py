@@ -37,7 +37,7 @@ DEFAULT_GUILD_ID = 488677373835870208
 STDOUT_CHANNEL_ID = 878383240086421514
 
 ################sourceCodeGithub################
-GITHUB_LINK = "https://github.com/Tutu-Inc/REINHARD-2.0"
+GITHUB_LINK = "https://github.com/Tutu-Inc/REINHARD"
 
 ################createMainVoice################
 TEMP_MAIN_CHANNEL = "➕〡CREATE CHANNEL"
