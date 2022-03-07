@@ -9,7 +9,7 @@ intents = discord.Intents.all()
 discord.member = True
 bot = commands.Bot(command_prefix = '.', intents = intents)
 
-game = cycle(['.help'])
+game = cycle(['.help', '/help'])
 bot.remove_command('help')
 
 @bot.event
@@ -22,7 +22,7 @@ async def on_ready():
     print('Log:\n')
     change_status.start()
        
-@tasks.loop(seconds=100) 
+@tasks.loop(seconds=5) 
 async def change_status():
     await bot.change_presence(activity=discord.Game(next(game)), status=discord.Status.online)
 
