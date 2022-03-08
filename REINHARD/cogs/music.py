@@ -3,8 +3,8 @@ from discord.ext import commands
 from discord.flags import Intents
 import youtube_dl
 
-from REINHARD.additionals.utils import mods_or_owner
-from REINHARD.additionals.data import *
+from utils.utils import mods_or_owner
+from data.data import *
 
 class Music(commands.Cog):    
     def __init__(self, bot):

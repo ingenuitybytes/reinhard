@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from REINHARD.additionals.data import *
+from constants import *
 
 async def notify_user(member, message):
     if member is not None:
