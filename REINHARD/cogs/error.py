@@ -1,4 +1,5 @@
 from discord.ext import commands
+from REINHARD.additionals.data import log
 
 class Error(commands.Cog):
     def __init__(self, bot):
@@ -6,8 +7,8 @@ class Error(commands.Cog):
         
     @commands.Cog.listener()
     async def on_command_error(self, ctx, ex):
-        print(ex)
         await ctx.send("Please check with **.help** the usage of this command or talk to one of the **moderators**")
+        log.error(ex)
               
 def setup(bot):
     bot.add_cog(Error(bot))

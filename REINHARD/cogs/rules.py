@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
 
-from utils.utils import mods_or_owner
-from data.data import *
+from REINHARD.additionals.utils import mods_or_owner
+from REINHARD.additionals.data import *
 
 class Rules(commands.Cog):
     def __init__(self, bot):

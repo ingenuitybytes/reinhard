@@ -1,10 +1,40 @@
 import os
 from dotenv import load_dotenv
 
+import logging
+from colorlog import ColoredFormatter
 
-################TOKEN################
+################logColoringSettings################
+LOG_LEVEL = logging.DEBUG
+LOGFORMAT = " %(log_color)s%(levelname)-8s%(reset)s | %(log_color)s%(message)s%(reset)s"
+
+logging.root.setLevel(LOG_LEVEL)
+formatter = ColoredFormatter(LOGFORMAT)
+stream = logging.StreamHandler()
+stream.setLevel(LOG_LEVEL)
+stream.setFormatter(formatter)
+log = logging.getLogger('pythonConfig')
+log.setLevel(LOG_LEVEL)
+log.addHandler(stream)
+
+################colorPalette################
+class Style():
+    BLACK = '\033[30m'
+    RED = '\033[31m'
+    GREEN = '\033[32m'
+    YELLOW = '\033[33m'
+    BLUE = '\033[34m'
+    MAGENTA = '\033[35m'
+    CYAN = '\033[36m'
+    WHITE = '\033[37m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
+    
+################TOKENandDEVTHINGS################
 load_dotenv()
-TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+TOKEN = os.environ["DISCORD_BOT_TOKEN"]
+DEFAULT_GUILD_ID = 488677373835870208
+STDOUT_CHANNEL_ID = 878383240086421514
 
 ################sourceCodeGithub################
 GITHUB_LINK = "https://github.com/Tutu-Inc/REINHARD"
