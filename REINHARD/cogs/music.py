@@ -76,9 +76,9 @@ class Music(commands.Cog):
                 info = ydl.extract_info(message, download=False)
                 if 'entries' in info:
                     url2 = info["entries"][0]["formats"][0]['url']
-                    print("SEARCH")
+                    log.info('SEARCH')
                 elif 'formats' in info:
-                    print("URL")
+                    log.info('URL')
                     url2 = info["formats"][0]['url']
                 source = await discord.FFmpegOpusAudio.from_probe(url2, **FFMPEG_OPTIONS)
                 vc.play(source)
