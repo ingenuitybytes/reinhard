@@ -14,8 +14,6 @@ class Bot(commands.Bot):
         async def startup(self):
             await bot.wait_until_ready()
             await bot.tree.sync(guild = discord.Object(id = 488677373835870208))
-            print('Sucessfully synced applications commands')
-            print(f'Connected as {bot.user}')
             async def setup_hook(self):
                 game = cycle(['.help', '/help'])
 
