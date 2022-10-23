@@ -20,7 +20,6 @@ class MyBot(commands.Bot):
                 await self.load_extension(f"REINHARD.cogs.{filename[:-3]}")
                 await bot.tree.sync(guild=discord.Object(id=826868484138598400)) #guild=discord.Object(id=826868484138598400)
 
-
     async def on_ready(self):
         print('--------------------')
         log.info('Logged in as {}'.format(self.user.name)) #type: ignore
