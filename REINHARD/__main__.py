@@ -18,19 +18,19 @@ class MyBot(commands.Bot):
         for filename in os.listdir("REINHARD/cogs"):
             if filename.endswith(".py") and filename != "__init__.py":
                 await self.load_extension(f"REINHARD.cogs.{filename[:-3]}")
-                await bot.tree.sync(guild=discord.Object(id=826868484138598400))
+                await bot.tree.sync(guild=discord.Object(id=826868484138598400)) #guild=discord.Object(id=826868484138598400)
 
 
     async def on_ready(self):
         print('--------------------')
-        log.info('Logged in as {}'.format(self.user.name))
-        log.info('ID: {}'.format(self.user.id))
+        log.info('Logged in as {}'.format(self.user.name)) #type: ignore
+        log.info('ID: {}'.format(self.user.id)) #type: ignore
         print('--------------------')
 
-        game = cycle(['/help', '/new'])
+        game = cycle(['Robolox', 'Fornite'])
         @tasks.loop(seconds=5) 
         async def change_status():
-            await self.change_presence(activity=discord.Game(next(game)), status=discord.Status.online)
+            await self.change_presence(status=discord.Status.online, activity=discord.Streaming(name=next(game), url='https://www.twitch.tv/.'))
         change_status.start()
 
 bot = MyBot()
