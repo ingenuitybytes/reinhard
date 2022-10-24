@@ -4,6 +4,7 @@ from discord.ext import commands
 
 from REINHARD.additionals.data import *
 
+
 class Questionnaire(ui.Modal, title='Questionnaire Response'):
    name = ui.TextInput(label='Name')
    answer = ui.TextInput(label='Answer', style=discord.TextStyle.paragraph)
@@ -39,8 +40,9 @@ class Modal(commands.Cog):
    async def modal(self, ctx): 
       await ctx.send("Modal!", view=SelectView())
 
+
 async def setup(bot: commands.Bot) -> None:
    await bot.add_cog(
       Modal(bot),
-      guilds = [discord.Object(id=826868484138598400)]
+      guilds = [discord.Object(id=GUILD_ID)]
       )

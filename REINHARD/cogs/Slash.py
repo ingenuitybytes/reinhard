@@ -4,6 +4,7 @@ from discord.ext import commands
 
 from REINHARD.additionals.data import *
 
+
 class Slash(commands.Cog):
    def __init__(self, bot: commands.Bot) -> None:
       self.bot = bot
@@ -38,5 +39,5 @@ class Slash(commands.Cog):
 async def setup(bot: commands.Bot) -> None:
    await bot.add_cog(
       Slash(bot),
-      guilds = [discord.Object(id=826868484138598400)]
+      guilds = [discord.Object(id=GUILD_ID)]
       )

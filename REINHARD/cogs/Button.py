@@ -3,6 +3,7 @@ from discord.ext import commands
 
 from REINHARD.additionals.data import *
 
+
 class Buttons(discord.ui.View):
    def __init__(self, *, timeout=180):
       super().__init__(timeout=timeout)
@@ -26,5 +27,5 @@ class Button(commands.Cog):
 async def setup(bot):
    await bot.add_cog(
       Button(bot),
-      guilds = [discord.Object(id=826868484138598400)]
+      guilds = [discord.Object(id=GUILD_ID)]
       )

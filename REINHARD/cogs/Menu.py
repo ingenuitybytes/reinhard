@@ -3,6 +3,7 @@ from discord.ext import commands
 
 from REINHARD.additionals.data import *
 
+
 class Select(discord.ui.Select):
    def __init__(self):
       options=[
@@ -32,8 +33,9 @@ class Menu(commands.Cog):
    async def menu(self, ctx):
       await ctx.send("Menus!", view=SelectView())
 
+
 async def setup(bot):
    await bot.add_cog(
       Menu(bot),
-      guilds = [discord.Object(id=826868484138598400)]
+      guilds = [discord.Object(id=GUILD_ID)]
       )
