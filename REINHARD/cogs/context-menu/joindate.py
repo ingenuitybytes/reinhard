@@ -25,7 +25,7 @@ class JoinDate(commands.Cog):
 
    @commands.Cog.listener()
    async def on_ready(self):
-      log.debug("Joindate cog is ready")
+      log.debug("Join Date cog is ready")
 
 
 async def setup(bot: commands.Bot) -> None:
