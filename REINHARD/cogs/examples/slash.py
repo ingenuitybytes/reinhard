@@ -15,7 +15,7 @@ class Slash(commands.Cog):
 
    @app_commands.command(
       name="test",
-      description="test description"
+      description="Test description"
       )
    @app_commands.checks.has_any_role(
       "Admin", "Moderator", "Owner"

@@ -13,7 +13,7 @@ async def notify_user(member, message):
 def mods_or_owner():
     def predicate(ctx):
         return commands.check_any(commands.is_owner(), commands.has_role(MODERATOR_ROLE_NAME))
-    return commands.check(predicate)
+    return commands.check(predicate)  # type: ignore
     
 async def create_text_channel(guild, channel_name):
         category = get_category_by_name(guild, "TEXTCHANNEL")

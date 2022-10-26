@@ -5,7 +5,7 @@ from discord.ext import commands
 from REINHARD.additionals.data import *
 
 
-class App(commands.Cog):
+class JoinDate(commands.Cog):
    def __init__(self, bot: commands.Bot) -> None:
       self.bot = bot
       self.ctx_menu = app_commands.ContextMenu(
@@ -21,15 +21,15 @@ class App(commands.Cog):
    # @app_commands.checks.has_permissions(ban_members=True)
    @app_commands.guilds(discord.Object(id=GUILD_ID))
    async def show_join_date(self, interaction: discord.Interaction, member: discord.Member):
-      await interaction.response.send_message(f'{member} joined at {discord.utils.format_dt(member.joined_at)}')
+      await interaction.response.send_message(f'{member} joined at {discord.utils.format_dt(member.joined_at)}')  # type: ignore
 
    @commands.Cog.listener()
    async def on_ready(self):
-      log.debug("App cog is ready")
+      log.debug("Joindate cog is ready")
 
 
 async def setup(bot: commands.Bot) -> None:
    await bot.add_cog(
-      App(bot),
+      JoinDate(bot),
       guilds = [discord.Object(id=GUILD_ID)]
       )
