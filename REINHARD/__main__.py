@@ -13,7 +13,7 @@ class MyBot(commands.Bot):
             command_prefix='.', 
             intents=discord.Intents.all(),
             application_id=APPLICATION_ID,
-            )
+        )
 
     async def setup_hook(self):
         for filename in os.listdir("REINHARD/cogs/slash"):
