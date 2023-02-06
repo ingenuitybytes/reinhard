@@ -13,7 +13,7 @@ class VoiceChannel(commands.Cog):
       
    @commands.Cog.listener()
    async def on_ready(self):
-      log.debug("Voice Channel cog is ready")   
+      utils.log.debug("Voice Channel cog is ready")   
       
    current_channels = list()
         

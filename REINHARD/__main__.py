@@ -10,6 +10,8 @@ import sqlite3
 import threading
 
 from REINHARD.bot import *
+from resources import Token
+import utils
 
 
 # Bot
@@ -31,17 +33,17 @@ def start():
     thread = threading.Thread(target=bot_start)
     thread.start()
     # Beispiel-Log hinzufügen
-    cursor.execute("INSERT INTO logs (time, message) VALUES (?, ?)", ((now.strftime("%d/%m/%Y %H:%M:%S")), "Started bot"))
+    cursor.execute("INSERT INTO logs (time, message) VALUES (?, ?)", ((utils.currentTime.strftime("%d/%m/%Y %H:%M:%S")), "Started bot"))
     conn.commit()
     return "Bot started"
 def bot_start():
-    bot.run(TOKEN)
+    bot.run(Token.TOKEN)
 @app.route("/api/stop", methods=["POST"])
 async def stop():
     # Hier könnten Sie den discord.py-Client stopen
     await bot.close()
     # Beispiel-Log hinzufügen
-    cursor.execute("INSERT INTO logs (time, message) VALUES (?, ?)", ((now.strftime("%d/%m/%Y %H:%M:%S")), "Stopped bot"))
+    cursor.execute("INSERT INTO logs (time, message) VALUES (?, ?)", ((utils.currentTime.strftime("%d/%m/%Y %H:%M:%S")), "Stopped bot"))
     conn.commit()
     return "Bot stopped" 
 @app.route("/api/status")

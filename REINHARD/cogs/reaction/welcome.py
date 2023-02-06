@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 from discord.ext import commands
 
-x
+import discord
 
 from resources import Token, BlurpleEmoji
 import utils

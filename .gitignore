@@ -12,6 +12,9 @@ nohup.out
 #launcher
 launcher.sh
 
+# database
+*.sqlite
+
 # Distribution / packaging
 .Python
 build/
