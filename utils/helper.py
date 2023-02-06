@@ -1,7 +1,7 @@
-import discord
 from discord.ext import commands
 
-from REINHARD.additionals.data import *
+from utils.data import *
+
 
 async def notify_user(member, message):
     if member is not None:
@@ -12,7 +12,7 @@ async def notify_user(member, message):
 
 def mods_or_owner():
     def predicate(ctx):
-        return commands.check_any(commands.is_owner(), commands.has_role(MODERATOR_ROLE_NAME))
+        return commands.check_any(commands.is_owner(), commands.has_role((emojis['MODERATOR_ROLE_NAME'])))
     return commands.check(predicate)  # type: ignore
     
 async def create_text_channel(guild, channel_name):

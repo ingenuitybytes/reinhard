@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
 
-from REINHARD.additionals.data import *
-from REINHARD.additionals.utils import *
+from REINHARD.utils.setup import *
+from REINHARD.utils.helper import *
 
 
 class Welcome(commands.Cog):
@@ -18,7 +18,7 @@ class Welcome(commands.Cog):
       channel = get_channel_by_name(member.guild, "willkommen")
       channel_id = channel.id #type: ignore
       
-      embed = discord.Embed(title=f'**HALLO {member.name}!**', description='{} {}\n**Info:**\nBitte bestätige die Regeln, um Zugriff auf die freie Rollenauswahl zu bekommen.\nWenn du Fragen hast, wende dich an einen der <@&601422939765604400>.'.format(BLURBLEYES_EMOJI, member.mention), color=0x5865F2)
+      embed = discord.Embed(title=f'**HALLO {member.name}!**', description='{} {}\n**Info:**\nBitte bestätige die Regeln, um Zugriff auf die freie Rollenauswahl zu bekommen.\nWenn du Fragen hast, wende dich an einen der <@&601422939765604400>.'.format((emojis['BLURBLEYES_EMOJI']), member.mention), color=0x5865F2)
       embed.set_thumbnail(url=member.avatar)     
       
       await self.bot.get_channel(channel_id).send(embed=embed) #type: ignore
@@ -28,7 +28,7 @@ class Welcome(commands.Cog):
       channel = get_channel_by_name(member.guild, "willkommen")
       channel_id = channel.id #type: ignore
       
-      embed = discord.Embed(title=f'**TSCHÜSS {member.name}!**', description='{} {}\n**Info:**\n{} hat die Gruppe verlassen. Wir werden dich vermissen!'.format(BLURPLENO_EMOJI, member.mention, member.name), color=0x5865F2)
+      embed = discord.Embed(title=f'**TSCHÜSS {member.name}!**', description='{} {}\n**Info:**\n{} hat die Gruppe verlassen. Wir werden dich vermissen!'.format((emojis['BLURPLENO_EMOJI']), member.mention, member.name), color=0x5865F2)
       embed.set_thumbnail(url=member.avatar)
 
       await self.bot.get_channel(channel_id).send(embed=embed) #type: ignore

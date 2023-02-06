@@ -1,7 +1,7 @@
 import discord
 from discord.ext import commands
 
-from REINHARD.additionals.data import *
+from REINHARD.utils.data import *
 
 
 class Buttons(discord.ui.View):

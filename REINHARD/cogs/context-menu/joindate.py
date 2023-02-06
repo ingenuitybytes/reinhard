@@ -2,7 +2,7 @@ import discord
 from discord import app_commands
 from discord.ext import commands
 
-from REINHARD.additionals.data import *
+from REINHARD.utils.setup import *
 
 
 class JoinDate(commands.Cog):

@@ -1,7 +1,7 @@
 from discord.ext import commands
 
-from REINHARD.additionals.utils import *
-from REINHARD.additionals.data import *
+from REINHARD.utils.setup import *
+from REINHARD.utils.helper import *
 
 
 class VoiceChannel(commands.Cog):
