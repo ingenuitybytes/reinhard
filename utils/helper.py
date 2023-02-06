@@ -1,7 +1,34 @@
 from discord.ext import commands
+from colorlog import ColoredFormatter
+from datetime import datetime
 
-from utils.data import *
+import logging
 
+
+currentTime = datetime.now()
+
+LOG_LEVEL = logging.DEBUG
+LOGFORMAT = " %(log_color)s%(levelname)-8s%(reset)s | %(log_color)s%(message)s%(reset)s"
+logging.root.setLevel(LOG_LEVEL)
+formatter = ColoredFormatter(LOGFORMAT)
+stream = logging.StreamHandler()
+stream.setLevel(LOG_LEVEL)
+stream.setFormatter(formatter)
+log = logging.getLogger('pythonConfig')
+log.setLevel(LOG_LEVEL)
+log.addHandler(stream)
+
+class Style():
+    BLACK = '\033[30m'
+    RED = '\033[31m'
+    GREEN = '\033[32m'
+    YELLOW = '\033[33m'
+    BLUE = '\033[34m'
+    MAGENTA = '\033[35m'
+    CYAN = '\033[36m'
+    WHITE = '\033[37m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
 
 async def notify_user(member, message):
     if member is not None:
@@ -12,7 +39,7 @@ async def notify_user(member, message):
 
 def mods_or_owner():
     def predicate(ctx):
-        return commands.check_any(commands.is_owner(), commands.has_role((emojis['MODERATOR_ROLE_NAME'])))
+        return commands.check_any(commands.is_owner(), commands.has_role('Moderatoren'))
     return commands.check(predicate)  # type: ignore
     
 async def create_text_channel(guild, channel_name):

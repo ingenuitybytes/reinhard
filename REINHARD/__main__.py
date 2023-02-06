@@ -57,7 +57,8 @@ def logs():
 
 if __name__ == "__main__":
     # Verbindung mit der SQLite-Datenbank herstellen
-    conn = sqlite3.connect("logs.db", check_same_thread=False)
+    db_file = 'resources/database.sqlite'
+    conn = sqlite3.connect(db_file, check_same_thread=False)
     cursor = conn.cursor()
     # Tabelle erstellen, falls sie noch nicht existiert
     cursor.execute("""CREATE TABLE IF NOT EXISTS logs (time text, message text)""")

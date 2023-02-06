@@ -10,6 +10,7 @@ from itertools import cycle
 import discord
 import os
 
+from resources.constants import Token
 import utils
 
 
@@ -19,22 +20,22 @@ class MyBot(commands.Bot):
         super().__init__(
             command_prefix='.', 
             intents=discord.Intents.all(),
-            application_id=utils.APPLICATION_ID,
+            application_id=Token.APPLICATION_ID,
         )
 
     async def setup_hook(self):
         for filename in os.listdir("REINHARD/cogs/slash"):
             if filename.endswith(".py") and filename != "__init__.py":
                 await self.load_extension(f"REINHARD.cogs.slash.{filename[:-3]}")
-                await bot.tree.sync(guild=discord.Object(id=utils.GUILD_ID))
+                await bot.tree.sync(guild=discord.Object(id=Token.GUILD_ID))
         for filename in os.listdir("REINHARD/cogs/context-menu"):
             if filename.endswith(".py") and filename != "__init__.py":
                 await self.load_extension(f"REINHARD.cogs.context-menu.{filename[:-3]}")
-                await bot.tree.sync(guild=discord.Object(id=utils.GUILD_ID))
+                await bot.tree.sync(guild=discord.Object(id=Token.GUILD_ID))
         for filename in os.listdir("REINHARD/cogs/reaction"):
             if filename.endswith(".py") and filename != "__init__.py":
                 await self.load_extension(f"REINHARD.cogs.reaction.{filename[:-3]}")
-                await bot.tree.sync(guild=discord.Object(id=utils.GUILD_ID))
+                await bot.tree.sync(guild=discord.Object(id=Token.GUILD_ID))
 
     async def on_ready(self):
         global status

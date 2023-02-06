@@ -1,8 +1,11 @@
-import discord
-from discord import app_commands
+#!/usr/bin/env python3
 from discord.ext import commands
+from discord import app_commands
 
-from REINHARD.utils.setup import *
+import discord
+
+from resources import Link, Token
+import utils
 
 
 class Sourcecode(commands.Cog):
@@ -11,7 +14,7 @@ class Sourcecode(commands.Cog):
       
    @commands.Cog.listener()
    async def on_ready(self):
-      log.debug("Sourcecode cog is ready")
+      utils.log.debug("Sourcecode cog is ready")
 
    @app_commands.command(
       name="sourcecode",
@@ -19,7 +22,7 @@ class Sourcecode(commands.Cog):
       )
 
    async def sourcecode(self, interaction: discord.Interaction) -> None:
-      await interaction.response.send_message(GITHUB_LINK, ephemeral=False)
+      await interaction.response.send_message(Link.GITHUB_LINK, ephemeral=False)
       
    @sourcecode.error
    async def sourcecode_error(self, interaction: discord.Interaction, error: app_commands.AppCommandError):
@@ -32,5 +35,5 @@ class Sourcecode(commands.Cog):
 async def setup(bot: commands.Bot) -> None:
    await bot.add_cog(
       Sourcecode(bot),
-      guilds = [discord.Object(id=GUILD_ID)]
+      guilds = [discord.Object(id=Token.GUILD_ID)]
       )
