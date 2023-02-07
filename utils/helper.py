@@ -1,22 +1,8 @@
+#!/usr/bin/env python3
 from discord.ext import commands
-from colorlog import ColoredFormatter
 from datetime import datetime
 
-import logging
-
-
-currentTime = datetime.now()
-
-LOG_LEVEL = logging.DEBUG
-LOGFORMAT = " %(log_color)s%(levelname)-8s%(reset)s | %(log_color)s%(message)s%(reset)s"
-logging.root.setLevel(LOG_LEVEL)
-formatter = ColoredFormatter(LOGFORMAT)
-stream = logging.StreamHandler()
-stream.setLevel(LOG_LEVEL)
-stream.setFormatter(formatter)
-log = logging.getLogger('pythonConfig')
-log.setLevel(LOG_LEVEL)
-log.addHandler(stream)
+currentTime = datetime.now().strftime("%d/%b/%Y %H:%M:%S")
 
 class Style():
     BLACK = '\033[30m'
