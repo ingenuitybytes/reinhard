@@ -42,7 +42,6 @@ def bot_start():
     bot.run(Token.TOKEN, log_formatter=utils.formatter, log_handler=utils.stream)
 @app.route("/api/stop", methods=["POST"])
 async def stop():
-    # Hier könnten Sie den discord.py-Client stopen
     await bot.close()
     # Beispiel-Log hinzufügen
     cursor.execute("INSERT INTO logs (time, message) VALUES (?, ?)", (utils.currentTime, "Stopped bot"))

@@ -50,7 +50,7 @@ class MyBot(commands.Bot):
         async def change_status():
             await self.change_presence(status=discord.Status.online, activity=discord.Streaming(name=next(game), url='https://www.twitch.tv/.'))
         change_status.start()
-    async def on_disconnect(self):
-        utils.log.info('Disconnected')
+    # async def on_disconnect(self):
+    #     utils.log.info('Disconnected')
 
 bot = MyBot()
