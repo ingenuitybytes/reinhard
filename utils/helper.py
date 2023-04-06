@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+# Import modules and files
 from discord.ext import commands
 from datetime import datetime
 

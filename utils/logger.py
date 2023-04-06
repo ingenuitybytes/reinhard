@@ -2,6 +2,8 @@
 '''This is the logger file.
 It contains the logger configuration.
 '''
+
+# Import modules and files
 import colorlog
 import logging
 import sqlite3

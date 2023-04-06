@@ -2,6 +2,8 @@
 '''This is the setup.py file for the REINHARD Discord bot.
 It is used to install the bot as a package.
 '''
+
+# Import modules and files
 from setuptools import setup, find_packages
 
 
