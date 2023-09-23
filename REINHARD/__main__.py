@@ -1,32 +1,48 @@
 import os
-import discord
 from itertools import cycle
+
+import discord
 from discord.ext import commands, tasks
 
 from REINHARD.additionals.data import *
 
-intents = discord.Intents.all()
-discord.member = True
-bot = commands.Bot(command_prefix = '.', intents = intents)
-#tree = app_commands.CommandTree(bot)
-bot.remove_command('help')
 
-game = cycle(['.help', '/help'])
+class MyBot(commands.Bot):
+    def __init__(self):
+        super().__init__(
+            command_prefix='.', 
+            intents=discord.Intents.all(),
+            application_id=APPLICATION_ID,
+        )
 
-@bot.event
-async def on_ready():
-    print('--------------------')
-    log.info('Logged in as {}'.format(bot.user.name))
-    log.info('ID: {}'.format(bot.user.id))
-    print('--------------------') 
-    change_status.start()
-       
-@tasks.loop(seconds=5) 
-async def change_status():
-    await bot.change_presence(activity=discord.Game(next(game)), status=discord.Status.online)
+    async def setup_hook(self):
+        for filename in os.listdir("REINHARD/cogs/slash"):
+            if filename.endswith(".py") and filename != "__init__.py":
+                await self.load_extension(f"REINHARD.cogs.slash.{filename[:-3]}")
+                await bot.tree.sync(guild=discord.Object(id=GUILD_ID))
+        for filename in os.listdir("REINHARD/cogs/context-menu"):
+            if filename.endswith(".py") and filename != "__init__.py":
+                await self.load_extension(f"REINHARD.cogs.context-menu.{filename[:-3]}")
+                await bot.tree.sync(guild=discord.Object(id=GUILD_ID))
+        for filename in os.listdir("REINHARD/cogs/reaction"):
+            if filename.endswith(".py") and filename != "__init__.py":
+                await self.load_extension(f"REINHARD.cogs.reaction.{filename[:-3]}")
+                await bot.tree.sync(guild=discord.Object(id=GUILD_ID))
 
-for filename in os.listdir("REINHARD/cogs"):
-    if filename.endswith(".py") and filename != "__init__.py":
-        bot.load_extension(f"REINHARD.cogs.{filename[:-3]}")
+    async def on_ready(self):
+        print('--------------------')
+        log.info('Logged in as {}'.format(self.user.name)) #type: ignore
+        log.info('ID: {}'.format(self.user.id)) #type: ignore
+        print('--------------------')
+        log.info('All cogs are ready') #type: ignore
+        print('--------------------')
+        
+        game = cycle(['Robolox', 'Fornite'])  # type: ignore
+        @tasks.loop(seconds=5) 
+        async def change_status():
+            await self.change_presence(status=discord.Status.online, activity=discord.Streaming(name=next(game), url='https://www.twitch.tv/.'))
+        change_status.start()
 
+
+bot = MyBot()
 bot.run(TOKEN)
