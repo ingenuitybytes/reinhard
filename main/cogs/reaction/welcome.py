@@ -13,7 +13,7 @@ class Welcome(commands.Cog):
    
    @commands.Cog.listener()
    async def on_ready(self):
-      utils.log.debug("Welcome cog is ready")
+      utils.log.info("Welcome cog is ready")
 
    @commands.Cog.listener()
    async def on_member_join(self, member: discord.Member):

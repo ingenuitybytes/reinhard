@@ -14,7 +14,7 @@ class Announcement(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        utils.log.debug("Announcements cog is ready")
+        utils.log.info("Announcements cog is ready")
     
     @app_commands.command(
         name="announcement",

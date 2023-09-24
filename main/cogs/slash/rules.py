@@ -14,7 +14,7 @@ class Rules(commands.Cog):
 
     @commands.Cog.listener()
     async def on_ready(self):
-        utils.log.debug("Rules cog is ready")
+        utils.log.info("Rules cog is ready")
     
     @app_commands.command(
         name="rules",

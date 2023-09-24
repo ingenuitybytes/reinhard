@@ -14,7 +14,7 @@ class Sourcecode(commands.Cog):
       
    @commands.Cog.listener()
    async def on_ready(self):
-      utils.log.debug("Sourcecode cog is ready")
+      utils.log.info("Sourcecode cog is ready")
 
    @app_commands.command(
       name="sourcecode",
