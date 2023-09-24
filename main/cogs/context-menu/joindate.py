@@ -1,8 +1,11 @@
-import discord
-from discord import app_commands
+#!/usr/bin/env python3
 from discord.ext import commands
+from discord import app_commands
 
-from REINHARD.additionals.data import *
+import discord
+
+from resources import Token
+import utils
 
 
 class JoinDate(commands.Cog):
@@ -19,17 +22,17 @@ class JoinDate(commands.Cog):
 
    # You can add checks too
    # @app_commands.checks.has_permissions(ban_members=True)
-   @app_commands.guilds(discord.Object(id=GUILD_ID))
+   @app_commands.guilds(discord.Object(id=Token.GUILD_ID))
    async def show_join_date(self, interaction: discord.Interaction, member: discord.Member):
       await interaction.response.send_message(f'{member} joined at {discord.utils.format_dt(member.joined_at)}')  # type: ignore
 
    @commands.Cog.listener()
    async def on_ready(self):
-      log.debug("Join Date cog is ready")
+      utils.log.debug("Join Date cog is ready")
 
 
 async def setup(bot: commands.Bot) -> None:
    await bot.add_cog(
       JoinDate(bot),
-      guilds = [discord.Object(id=GUILD_ID)]
+      guilds = [discord.Object(id=Token.GUILD_ID)]
       )

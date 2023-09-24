@@ -2,7 +2,7 @@ import discord
 from discord import app_commands, ui
 from discord.ext import commands
 
-from REINHARD.additionals.data import *
+from main.utils.data import *
 
 
 class Questionnaire(ui.Modal, title='Questionnaire Response'):
