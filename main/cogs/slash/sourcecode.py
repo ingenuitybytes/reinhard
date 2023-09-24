@@ -34,6 +34,6 @@ class Sourcecode(commands.Cog):
 
 async def setup(bot: commands.Bot) -> None:
    await bot.add_cog(
-      Sourcecode(bot),
-      guilds = [discord.Object(id=Token.GUILD_ID)]
+      Sourcecode(bot)#,
+      #guilds = [discord.Object(id=Token.GUILD_ID)]
       )

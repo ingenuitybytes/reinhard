@@ -33,6 +33,6 @@ class JoinDate(commands.Cog):
 
 async def setup(bot: commands.Bot) -> None:
    await bot.add_cog(
-      JoinDate(bot),
-      guilds = [discord.Object(id=Token.GUILD_ID)]
+      JoinDate(bot)#,
+      #guilds = [discord.Object(id=Token.GUILD_ID)]
       )

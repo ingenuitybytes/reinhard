@@ -69,6 +69,6 @@ class Rules(commands.Cog):
             
 async def setup(bot: commands.Bot) -> None:
    await bot.add_cog(
-      Rules(bot),
-      guilds = [discord.Object(id=Token.GUILD_ID)]
+      Rules(bot)#,
+      #guilds = [discord.Object(id=Token.GUILD_ID)]
       )

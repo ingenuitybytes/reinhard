@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 from discord.ext import commands
 
+import discord
+
 from resources import Token, Channel
 import utils
-
-import discord
 
 
 class VoiceChannel(commands.Cog):

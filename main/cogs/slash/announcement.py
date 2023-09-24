@@ -38,6 +38,6 @@ class Announcement(commands.Cog):
             
 async def setup(bot: commands.Bot) -> None:
    await bot.add_cog(
-      Announcement(bot),
-      guilds = [discord.Object(id=Token.GUILD_ID)]
+      Announcement(bot)#,
+      #guilds = [discord.Object(id=Token.GUILD_ID)]
       )
