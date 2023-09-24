@@ -58,4 +58,4 @@ bot = MyBot()
 
 if __name__ == "__main__": 
     # Start the bot
-    bot.run(Token.TOKEN, log_formatter=utils.formatter, log_handler=utils.stream)
+    bot.run(Token.TOKEN, log_handler=None)
