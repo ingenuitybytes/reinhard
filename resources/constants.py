@@ -13,7 +13,7 @@ class Token():
 
 # Links
 class Link():
-    GITHUB_LINK = "https://github.com/Tutu-Inc/REINHARD"
+    GITHUB_LINK = "https://github.com/ingenuitybytes/reinhard"
 
 # Channels
 class Channel():

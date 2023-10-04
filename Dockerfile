@@ -14,4 +14,4 @@ RUN apt-get update && apt-get install -y git && \
     pip install -r requirements.txt
 
 # CMD gibt den Standardbefehl zum Ausführen des Containers an. 
-CMD ["./venv/bin/python", "-m", "main"]
+CMD ["venv/bin/python", "-m", "main"]
