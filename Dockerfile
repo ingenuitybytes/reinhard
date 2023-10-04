@@ -12,4 +12,4 @@ RUN apt-get update && apt-get install -y git && \
     pip install --no-cache-dir -r requirements.txt
 
 # CMD gibt den Standardbefehl zum Ausführen des Containers an.
-CMD ["python3", "-m", "main"]
+CMD ["python", "-m", "main"]
