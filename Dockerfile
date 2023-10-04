@@ -1,5 +1,5 @@
-# Verwenden Sie ein Basis-Image mit Python 3
-FROM python:3.8-slim-buster
+# Verwenden Sie ein Basis-Image mit Python 3.11
+FROM python:3.11-slim-bullseye
 
 # Setzen Sie das Arbeitsverzeichnis im Container
 WORKDIR /bot_data
@@ -9,9 +9,7 @@ COPY . .
 
 # Installieren Sie notwendige Pakete
 RUN apt-get update && apt-get install -y git && \
-    python -m venv venv && \
-    . venv/bin/activate && \
-    pip install -r requirements.txt
+    pip install --no-cache-dir -r requirements.txt
 
-# CMD gibt den Standardbefehl zum Ausführen des Containers an. 
-CMD ["venv/bin/python", "-m", "main"]
+# CMD gibt den Standardbefehl zum Ausführen des Containers an.
+CMD ["python3", "-m", "main"]
