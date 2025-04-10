@@ -44,7 +44,7 @@ class MyBot(commands.Bot):
         print('--------------------')
         
         game = cycle(['Stellaris', 'Minecraft'])
-        @tasks.loop(seconds=5) 
+        @tasks.loop(seconds=5)
         async def change_status():
             await self.change_presence(status=discord.Status.online, activity=discord.Streaming(name=next(game), url='https://www.twitch.tv/.'))
         change_status.start()
